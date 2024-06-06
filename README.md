@@ -44,6 +44,16 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e778f23e-0291-478
 
 #### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press `Enter` to keep the current value.
 
+## 6. Possibility to execute `bin/log` with arguments
+
+For example `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten.
+
+To avoid mixing, I did it as follows:
+
+First, the logs from the first file are displayed, then after `Ctrl + C` you can see the real-time logs from the other file(s)
+
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1b723ae4-c60d-4712-95f5-9dfb8ab4fdc3
+
 ## Installation
 
 ### Download the bash script inside the `bin` folder of your Magento 2 project
