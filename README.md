@@ -46,7 +46,7 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e778f23e-0291-478
 
 ## 6. Possibility to execute `bin/log` with arguments
 
-For example `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten.
+For example, use `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files.
 
 To avoid mixing, I did it as follows:
 
