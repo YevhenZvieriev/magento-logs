@@ -79,6 +79,8 @@ chmod +x ./log
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
 
+Given the length of the script, I've provided comments to help people understand if they would like to contribute.
+
 ## License
 
 This project is licensed under the MIT License.
