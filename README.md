@@ -1,7 +1,7 @@
 # Magento 2 Log Management Script
 
 ## Overview
-Simplify and streamline your Magento 2 log management with this powerful bash script. This project, created by a Magento engineer, offers an easy-to-use interface for viewing, tailing, and searching logs from your Magento 2 project in real time. Enhance your debugging and monitoring capabilities with color-coded log entries for better readability and quick issue identification.
+Simplify and streamline your Magento 2 log management with this powerful bash script. This project, created by a Magento developer for Magento developers, offers an easy-to-use interface for viewing, tailing, and searching errors in your log files from your Magento 2 project in real time. Enhance your debugging and monitoring capabilities with color-coded log entries for better readability and quick issue identification.
 
 ## Features
 
@@ -50,7 +50,7 @@ For example, use `bin/log --tail cron.log system.log` OR `bin/log -t system.log 
 
 To avoid mixing, I did it as follows:
 
-First, the logs from the first file are displayed, then after `Ctrl + C` you can see the real-time logs from the other file(s)
+First, the logs from the first file are displayed, then after `Ctrl + C` you can see the real-time logs from the other file(s).
 
 https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1b723ae4-c60d-4712-95f5-9dfb8ab4fdc3
 
