@@ -42,7 +42,8 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/79a454b5-d6a7-4eb
 https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e778f23e-0291-478c-a420-ba39df9b5cba
 
 
-### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press Enter to keep the current value
+#### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press `Enter` to keep the current value.
+
 ## Installation
 
 ### Download the bash script inside the `bin` folder of your Magento 2 project
