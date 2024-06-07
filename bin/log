@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# Developed by Yevhen Zvieriev
+# For inquiries, please contact is3kv3@ukr.net
+
 # Define the path to log files
 LOGS_PATH="/var/www/html/var/log"
 
 # Get the container name based on the current directory
 CONTAINER_NAME="$(basename "$(pwd)")-phpfpm-1"
-
-echo -e "\033[94mDeveloped by \033[34mYevhen \033[93mZvieriev\033[0m"
 
 # Function to view help message
 display_help () {
@@ -117,7 +118,7 @@ tail_all_logs() {
     # Tail log files with formatting output with colors
     docker exec -it "$CONTAINER_NAME" tail -f "${logs[@]/#/$LOGS_PATH/}" | while IFS= read -r line;
     do
-        format_log_output <<< "$line"
+        echo "$line" | format_log_output
     done
 }
 
@@ -130,7 +131,7 @@ tail_error_logs() {
     | grep -E --line-buffered "(ERROR|FATAL|CRITICAL)" \
     | while IFS= read -r line;
      do
-         format_log_output <<< "$line"
+         echo "$line" | format_log_output
      done
 }
 
@@ -138,15 +139,15 @@ tail_error_logs() {
 if [[ "$1" == "-t" || "$1" == "--tail" ]];
 then
     shift
-    for log_file in "$@"; do
-        tail_all_logs "$log_file"
-    done
+    tail_all_logs "$@"
+    exit 0
 fi
 
 # Check if the option is to help
 if [[ $1 == "-h" || $1 == "--help" ]];
 then
     display_help
+    exit 0
 fi
 
 # Main loop to display menu and handle user input
