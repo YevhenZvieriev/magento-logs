@@ -31,10 +31,7 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/6dc305b8-5f2b-4b8
 
 ## 4. Tail Logs: Monitor logs in real-time with an option to view all logs or only error logs:
 
-
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/79a454b5-d6a7-4eba-bd44-491e2c09ea82
-
-
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e773633a-b285-4f4c-a0d2-06f2f5852487
    
 ## 5. Configure Options: Set custom log file paths and container names according to your environment setup:
 
