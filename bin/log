@@ -114,11 +114,15 @@ format_log_output() {
 # Function to tail all log files in real-time
 tail_all_logs() {
     local logs=("$@")
-    echo -e "\n\033[96mTailing logs from ${logs[*]}...\033[0m"
-    # Tail log files with formatting output with colors
+    echo -e "\n\033[96mTailing logs from ${logs[*]}...\033[0m\n"
+
     docker exec -it "$CONTAINER_NAME" tail -f "${logs[@]/#/$LOGS_PATH/}" | while IFS= read -r line;
     do
-        echo "$line" | format_log_output
+        if [[ $line =~ ^\=\=\>\ (.+)\ \<\=\= ]]; then
+            echo -e "\033[95m$line\033[0m"
+        else
+            format_log_output <<< "$line"
+        fi
     done
 }
 
