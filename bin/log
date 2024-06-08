@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Developed by Yevhen Zvieriev
-# For inquiries, please contact is3kv3@ukr.net
+# Author: Yevhen Zvieriev
+# Contact: is3kv3@ukr.net
 
 # Define the path to log files
 LOGS_PATH="/var/www/html/var/log"
@@ -128,10 +128,10 @@ tail_all_logs() {
 
 # Function to tail only error logs in real-time
 tail_error_logs() {
-    local log_file="$1"
-    echo -e "\n\033[96mTailing all error logs from $log_file...\033[0m"
-    # Tail error logs and format output with colors
-    docker exec -it "$CONTAINER_NAME" tail -f "$LOGS_PATH/$log_file" \
+    local logs=("$@")
+    echo -e "\n\033[96mTailing all error logs from ${logs[*]}...\033[0m\n"
+
+    docker exec -it "$CONTAINER_NAME" tail -f "${logs[@]/#/$LOGS_PATH/}" \
     | grep -E --line-buffered "(ERROR|FATAL|CRITICAL)" \
     | while IFS= read -r line;
      do
@@ -187,15 +187,18 @@ while true;
         read -r -p "Enter the option number (1 or 2): " tail_option
         echo -e "\n\033[96mChoose a log file to tail:\033[0m"
         show_logs
-        read -r -p "Enter the log file name (with extension, e.g., system.log): " log_file
+	read -r -p "Enter the log file names (separated by space, e.g., cron.log debug.log): " log_files
+
         echo -e "\033[96mPress [Ctrl+C] to stop tailing logs\033[0m"
 
         if [ "$tail_option" == "1" ];
         then
-            tail_all_logs "$log_file"
+            tail_all_logs $log_files
+
         elif [ "$tail_option" == "2" ];
         then
-            tail_error_logs "$log_file"
+	    tail_error_logs $log_files
+	
         else
             echo -e "\n\033[91mInvalid choice.\033[0m"
         fi
