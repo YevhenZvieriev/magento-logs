@@ -21,12 +21,6 @@ if ! docker info &> /dev/null; then
     exit 1
 fi
 
-# Check if the specified container is running
-if ! docker ps --format '{{.Names}}' | grep -q "^$CONTAINER_NAME\$"; then
-    echo -e "\033[91mContainer $CONTAINER_NAME not found. Please check the container name and try again.\033[0m"
-    exit 1
-fi
-
 # Function to view help message
 display_help () {
   echo -e "\nDescription:
@@ -76,9 +70,18 @@ view_log () {
     docker exec -it "$CONTAINER_NAME" cat "$LOGS_PATH/$log_file"
 }
 
+# Check if the specified container is running
+if_containter_is_running(){
+    if ! docker ps --format '{{.Names}}' | grep -q "^$CONTAINER_NAME\$"; then
+	echo -e "\033[91mContainer $CONTAINER_NAME not found. Please check the container name and try again.\033[0m"
+    	exit 1
+    fi
+}
+
 # Function to list available log files
 show_logs () {
-    echo -e "\n\033[96mAvailable log files:\033[0m"
+   if_containter_is_running
+   echo -e "\n\033[96mAvailable log files:\033[0m"
     docker exec -it "$CONTAINER_NAME" \
     find "$LOGS_PATH" -maxdepth 1 -type f -name "*.log" \
     -exec basename {} \; 2>/dev/null | \
