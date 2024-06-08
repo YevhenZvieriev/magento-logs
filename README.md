@@ -48,7 +48,7 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/3743fbef-1ea5-402
 
 For example, use `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files.
 
-Also, if your log files are found in the `/var/log/Amasty/` folder using `bin/log -t Amasty/some.log` you can easily view them:
+Also, if your log files are found in the `/var/log/Amasty/` folder using `bin/log -t Amasty/some.log` OR `bin/log --tail Amasty/some.log Amasty/some2.log` you can easily view them:
 
 https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1c9235cc-171f-464c-9ae3-9beb3a6df90e
 
