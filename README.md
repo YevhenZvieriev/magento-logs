@@ -12,44 +12,38 @@ Simplify and streamline your Magento 2 log management with this powerful bash sc
 * Interactive Menu: A user-friendly interactive menu to choose from various log management operations.
 
 ## Usage
-![Screenshot from 2024-06-06 20-33-03](https://github.com/YevhenZvieriev/magento-logs/assets/43544955/97cda864-b70a-424d-b850-a6d09798113e)
+
+![Screenshot from 2024-06-08 10-22-41](https://github.com/YevhenZvieriev/magento-logs/assets/43544955/be8781af-0c6b-4b8e-88fd-2b672a19ced7)
 
 ## 1. View existing log files:
 
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e23d259c-0565-4e35-9514-ab926eef91ae
-
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/861f0ec0-a40d-47ed-892b-4f7f7c77e55e
 
 ## 2. Display the content of any specific log file directly from the Docker container:
 
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/8290daec-497b-46e7-9dcd-e5ed80571ef4
-
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/ba09e155-5f64-41c2-b880-7227dd9fab2e
 
 ## 3. Search Errors: Automatically search and highlight errors and warnings across all log files:
-   
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/6dc305b8-5f2b-4b89-8c84-9fa3d231952c
 
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/36705b45-c757-46ed-b50c-c9ba26c1f8f8
 
 ## 4. Tail Logs: Monitor logs in real-time with an option to view all logs or only error logs:
 
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e773633a-b285-4f4c-a0d2-06f2f5852487
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/5a572944-1d16-4840-86bb-76d2b61dccec
+
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/114418a4-28d1-4225-87da-dea258cdb4ab
    
 ## 5. Configure Options: Set custom log file paths and container names according to your environment setup:
 
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/2749050b-5a7c-4e18-9582-f6a09f945295
 
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/e778f23e-0291-478c-a420-ba39df9b5cba
-
-
-#### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press `Enter` to keep the current value.
+#### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press `Enter` to keep the сurrent value.
 
 ## 6. Possibility to execute `bin/log` with arguments
 
 For example, use `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files.
 
-To avoid mixing, I did it as follows:
-
-First, the logs from the first file are displayed, then after `Ctrl + C` you can see the real-time logs from the other file(s).
-
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1b723ae4-c60d-4712-95f5-9dfb8ab4fdc3
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1c9235cc-171f-464c-9ae3-9beb3a6df90e
 
 ## Installation
 
