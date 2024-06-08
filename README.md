@@ -39,6 +39,11 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/2749050b-5a7c-4e1
 
 #### This functionality will be useful for those with log files stored in a folder other than the default, so you can change it to suit your needs. Also, for your convenience, if you don't want to change the path or container name, press `Enter` to keep the сurrent value.
 
+#### For example, your log files are found in the `/var/log/Amasty/` folder, you can easily view them using this option:
+
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/3743fbef-1ea5-4027-8a9d-031a089d858a
+
+
 ## 6. Possibility to execute `bin/log` with arguments
 
 For example, use `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files.
