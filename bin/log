@@ -11,13 +11,19 @@ CONTAINER_NAME="$(basename "$(pwd)")-phpfpm-1"
 
 # Check if Docker is installed
 if ! command -v docker &> /dev/null; then
-    echo -e "\n\033[91mDocker is not installed. Please install Docker and try again.\033[0m"
+    echo -e "\033[91mDocker is not installed. Please install Docker and try again.\033[0m"
     exit 1
 fi
 
 # Check if Docker is running
 if ! docker info &> /dev/null; then
-    echo -e "\n\033[91mDocker is not running. Please start Docker and try again.\033[0m"
+    echo -e "\033[91mDocker is not running. Please start Docker and try again.\033[0m"
+    exit 1
+fi
+
+# Check if the specified container is running
+if ! docker ps --format '{{.Names}}' | grep -q "^$CONTAINER_NAME\$"; then
+    echo -e "\033[91mContainer $CONTAINER_NAME not found. Please check the container name and try again.\033[0m"
     exit 1
 fi
 
@@ -81,20 +87,25 @@ show_logs () {
 
 # Function to search for errors in log files
 search_errors () {
+    # Create a temporary directory for logs
+    tmp_dir=$(mktemp -d)
     # Copy log files from the container to the host
-    docker cp "$CONTAINER_NAME:$LOGS_PATH" ./ > /dev/null 2>&1
+    if ! docker cp "$CONTAINER_NAME:$LOGS_PATH" "$tmp_dir" > /dev/null 2>&1; then
+        echo -e "\n\033[91mFailed to copy log files from container.\033[0m"
+        return
+    fi
     local found_errors=false
     # Loop through each log file
-    for log_file in ./log/*.log; do
+    for log_file in "$tmp_dir/$(basename "$LOGS_PATH")"/*.log; do
         # Search for different types of log messages and format the output
-       local errors
-       errors=$(grep -E -r --color=always "\(ERROR\|FATAL\|CRITICAL\)" "$log_file" | format_log_output || true)
-       local warnings
-       warnings=$(grep -E -r --color=always "\bWARNING\b" "$log_file" | format_log_output || true)
-       local info
-       info=$(grep -E -r --color=always "INFO" "$log_file" | format_log_output || true)
-       local debug
-       debug=$(grep -E -r --color=always "DEBUG" "$log_file" | format_log_output || true)
+        local errors
+        errors=$(grep -E -r --color=always "(ERROR|FATAL|CRITICAL)" "$log_file" | format_log_output || true)
+        local warnings
+        warnings=$(grep -E -r --color=always "\bWARNING\b" "$log_file" | format_log_output || true)
+        local info
+        info=$(grep -E -r --color=always "INFO" "$log_file" | format_log_output || true)
+        local debug
+        debug=$(grep -E -r --color=always "DEBUG" "$log_file" | format_log_output || true)
         # If any errors or warnings are found, print them
         if [ -n "$errors" ] || [ -n "$warnings" ] || [ -n "$info" ] || [ -n "$debug" ]; then
             found_errors=true
@@ -107,10 +118,9 @@ search_errors () {
         fi
     done
     # Remove temporary log files
-    rm -rf ./log
+    rm -rf "$tmp_dir"
     # If no errors are found, display a message
-    if [ "$found_errors" = false ];
-    then
+    if [ "$found_errors" = false ]; then
         echo -e "\n\033[1mNo errors found in any log file.\033[0m"
     fi
 }
