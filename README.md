@@ -25,7 +25,7 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/ba09e155-5f64-41c
 
 ## 3. Search Errors: Automatically search and highlight errors and warnings across all log files:
 
-https://github.com/YevhenZvieriev/magento-logs/assets/43544955/36705b45-c757-46ed-b50c-c9ba26c1f8f8
+https://github.com/YevhenZvieriev/magento-logs/assets/43544955/276079c8-04dc-4496-8d6d-81adcce9136c
 
 ## 4. Tail Logs: Monitor logs in real-time with an option to view all logs or only error logs:
 
