@@ -81,3 +81,8 @@ Given the length of the script, I've provided comments to help people understand
 ## License
 
 This project is licensed under the MIT License.
+
+## Copyright
+
+(c) Yevhen Zvieriev
+
