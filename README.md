@@ -45,9 +45,14 @@ https://github.com/YevhenZvieriev/magento-logs/assets/43544955/3743fbef-1ea5-402
 
 Also, if your log files are found in the `/var/log/Amasty/` folder using `bin/log -t Amasty/some.log Amasty/some2.log` OR `bin/log --tail Amasty/some.log Amasty/some2.log` you can easily view them.
 
-## 6. Possibility to execute `bin/log` with arguments
+## 6. Possibility to execute the `bin/log` script with arguments
 
-Using `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files.
+Using `bin/log -h` or `bin/log --help` script displays help information, including a script description, examples of its use, arguments, and options:
+
+![Screenshot from 2024-06-17 14-11-46](https://github.com/YevhenZvieriev/magento-logs/assets/43544955/4446e69e-586b-4752-9ca8-0424cae03848)
+
+
+Using `bin/log --tail cron.log system.log` OR `bin/log -t system.log cron.log` to shorten, you can monitor logs in real-time for two or more log files:
 
 https://github.com/YevhenZvieriev/magento-logs/assets/43544955/1c9235cc-171f-464c-9ae3-9beb3a6df90e
 
